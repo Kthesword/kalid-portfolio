@@ -125,7 +125,7 @@ export default function App() {
                 <span className="text-neon-cyan text-glow-cyan uppercase">ADEM</span>
               </h1>
               <p className="text-lg md:text-xl text-slate-text tracking-[1px] uppercase border-l-[3px] border-neon-cyan pl-4 leading-normal mb-12">
-                Competitive Programmer &<br />
+                AI Developer, Competitive Programmer &<br />
                 Electronics Engineering Student
               </p>
               
