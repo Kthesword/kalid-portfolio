@@ -4,15 +4,15 @@
  */
 
 import { motion } from "motion/react";
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Phone, 
-  Code2, 
-  Cpu, 
-  Trophy, 
-  ExternalLink, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  Code2,
+  Cpu,
+  Trophy,
+  ExternalLink,
   ChevronRight,
   Terminal,
   Layers,
@@ -21,7 +21,8 @@ import {
   GitBranch,
   Activity,
   CheckCircle2,
-  Briefcase
+  Briefcase,
+  Download
 } from "lucide-react";
 
 const NAV_LINKS = [
@@ -174,7 +175,7 @@ export default function App() {
       <div className="fixed inset-0 grid-pattern opacity-30 pointer-events-none z-0" />
       <div className="fixed top-[10%] right-[5%] w-[420px] h-[420px] bg-blob pointer-events-none z-0" />
       <div className="fixed bottom-[15%] left-[5%] w-[380px] h-[380px] bg-blob pointer-events-none z-0 opacity-50" />
-      
+
       {/* Top Navigation */}
       <header className="fixed top-0 left-0 right-0 h-20 flex justify-between items-center px-6 md:px-12 border-b border-white/5 z-50 bg-dark-bg/80 backdrop-blur-md">
         <div className="font-extrabold text-2xl tracking-tighter text-white flex items-center gap-2">
@@ -185,26 +186,36 @@ export default function App() {
         </div>
         <nav className="flex items-center gap-6 md:gap-8 text-[12px] md:text-[13px] font-semibold uppercase tracking-widest opacity-80">
           {NAV_LINKS.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
+            <a
+              key={link.name}
+              href={link.href}
               className="hover:text-neon-cyan transition-colors"
             >
               {link.name}
             </a>
           ))}
-          <a 
-            href="mailto:kjbuta@gmail.com" 
-            className="px-3.5 py-1.5 rounded-full border border-neon-cyan/40 bg-neon-cyan/10 text-neon-cyan hover:bg-neon-cyan hover:text-black transition-all font-bold text-xs"
-          >
-            Contact
-          </a>
+          <div className="flex items-center gap-3 ml-2">
+            <a
+              href="/Kalid_Adem_Resume.pdf"
+              download="Kalid_Adem_Resume.pdf"
+              className="px-3.5 py-1.5 rounded-full border border-emerald-400/50 bg-emerald-400/10 text-emerald-400 hover:bg-emerald-400 hover:text-black transition-all font-bold text-xs flex items-center gap-1.5"
+            >
+              <Download size={14} />
+              Resume
+            </a>
+            <a
+              href="mailto:kjbuta@gmail.com"
+              className="px-3.5 py-1.5 rounded-full border border-neon-cyan/40 bg-neon-cyan/10 text-neon-cyan hover:bg-neon-cyan hover:text-black transition-all font-bold text-xs"
+            >
+              Contact
+            </a>
+          </div>
         </nav>
       </header>
 
       {/* Main Content */}
       <main className="relative z-10 pt-20">
-        
+
         {/* Hero Section */}
         <section className="min-h-[calc(100vh-5rem)] flex items-center px-6 md:px-12 lg:px-24 py-16 lg:py-0">
           <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-12 md:gap-20 items-center w-full">
@@ -222,11 +233,11 @@ export default function App() {
                 KALID<br />
                 <span className="text-neon-cyan text-glow-cyan uppercase">ADEM</span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-slate-text tracking-[0.5px] border-l-[3px] border-neon-cyan pl-4 leading-relaxed mb-10 max-w-xl">
                 <strong className="text-white font-semibold">Software Engineer & AI Developer</strong> with hands-on experience engineering scalable web applications, distributed platforms, and AI-driven systems. Currently building <span className="text-neon-cyan font-medium">OpsFlow</span> at GoldenAge Technology PLC.
               </p>
-              
+
               {/* Quick Metrics */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl">
                 <div className="neon-border p-5 rounded-xl">
@@ -250,16 +261,16 @@ export default function App() {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 mt-8">
-                <a 
-                  href="#projects" 
+                <a
+                  href="#projects"
                   className="px-6 py-3 rounded-lg bg-neon-cyan text-slate-950 font-bold text-sm hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-all flex items-center gap-2"
                 >
                   <Briefcase size={16} />
                   View Featured Projects
                 </a>
-                <a 
-                  href="https://github.com/Kthesword" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Kthesword"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-lg neon-border text-white font-medium text-sm hover:border-neon-cyan/60 hover:text-neon-cyan transition-all flex items-center gap-2"
                 >
@@ -284,7 +295,7 @@ export default function App() {
                 </div>
                 <span className="text-xs text-slate-text/60 font-mono">kalid_profile.ts</span>
               </div>
-              
+
               <div className="flex-1 space-y-1.5 text-neon-cyan leading-relaxed mb-6 font-mono text-[13px]">
                 <p className="text-slate-text opacity-70">// Full-Stack & Distributed Systems Profile</p>
                 <p><span className="text-pink-400">interface</span> <span className="text-yellow-400">Engineer</span> {'{'}</p>
@@ -348,10 +359,10 @@ export default function App() {
                 <p>Enterprise operations suites, role-based access control, WebSocket collaboration, and scalable API services.</p>
               </div>
             </div>
-            
+
             <div className="lg:w-2/3 space-y-16">
               {EXPERIENCE.map((exp, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -360,7 +371,7 @@ export default function App() {
                 >
                   <div className="absolute top-0 left-[-1.5px] h-full w-[2px] bg-gradient-to-b from-neon-cyan via-neon-cyan/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute top-0 left-[-5px] w-2.5 h-2.5 rounded-full bg-neon-cyan group-hover:shadow-[0_0_12px_rgba(34,211,238,1)] transition-all" />
-                  
+
                   <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
                     <div>
                       <div className="flex items-center gap-3">
@@ -435,9 +446,9 @@ export default function App() {
                     </span>
                     <div className="flex items-center gap-3">
                       {proj.live && (
-                        <a 
-                          href={proj.live} 
-                          target="_blank" 
+                        <a
+                          href={proj.live}
+                          target="_blank"
                           rel="noopener noreferrer"
                           title="Live Demo"
                           className="text-slate-text hover:text-emerald-400 transition-colors p-1.5 rounded hover:bg-white/5"
@@ -445,9 +456,9 @@ export default function App() {
                           <ExternalLink size={17} />
                         </a>
                       )}
-                      <a 
-                        href={proj.github} 
-                        target="_blank" 
+                      <a
+                        href={proj.github}
+                        target="_blank"
                         rel="noopener noreferrer"
                         title="GitHub Repository"
                         className="text-slate-text hover:text-neon-cyan transition-colors p-1.5 rounded hover:bg-white/5"
@@ -461,16 +472,16 @@ export default function App() {
                     {proj.title}
                   </h3>
                   <p className="text-xs text-neon-cyan/70 font-mono mb-4">{proj.subtitle}</p>
-                  
+
                   <p className="text-slate-text text-sm leading-relaxed mb-6">
                     {proj.description}
                   </p>
 
                   {proj.secondaryLink && (
                     <div className="mb-6">
-                      <a 
-                        href={proj.secondaryLink.url} 
-                        target="_blank" 
+                      <a
+                        href={proj.secondaryLink.url}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs text-neon-cyan hover:underline font-mono"
                       >
@@ -509,7 +520,7 @@ export default function App() {
                 Full-stack toolchain spanning modern frontend frameworks, scalable backend microservices, relational and document databases, and competitive algorithmic fundamentals.
               </p>
             </div>
-            
+
             <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
               {SKILLS.map((set, idx) => (
                 <div key={idx} className="p-6 rounded-xl neon-border">
@@ -519,8 +530,8 @@ export default function App() {
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {set.items.map(item => (
-                      <span 
-                        key={item} 
+                      <span
+                        key={item}
                         className="px-3 py-1.5 border border-white/10 rounded-lg bg-white/5 hover:border-neon-cyan/40 hover:bg-neon-cyan/5 transition-all text-xs font-medium text-gray-200"
                       >
                         {item}
@@ -551,8 +562,8 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
             {/* GitHub Stats Widget */}
             <div className="neon-border p-6 rounded-xl flex flex-col justify-center items-center overflow-hidden">
-              <img 
-                src="https://github-readme-stats-eight-theta.vercel.app/api?username=Kthesword&show_icons=true&theme=tokyonight" 
+              <img
+                src="https://github-readme-stats-eight-theta.vercel.app/api?username=Kthesword&show_icons=true&theme=tokyonight"
                 alt="Kalid's GitHub Stats"
                 className="w-full max-w-md rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 loading="lazy"
@@ -561,8 +572,8 @@ export default function App() {
 
             {/* Top Languages Widget */}
             <div className="neon-border p-6 rounded-xl flex flex-col justify-center items-center overflow-hidden">
-              <img 
-                src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Kthesword&layout=compact&theme=tokyonight" 
+              <img
+                src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Kthesword&layout=compact&theme=tokyonight"
                 alt="Kalid's Top Languages"
                 className="w-full max-w-md rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 loading="lazy"
@@ -571,8 +582,8 @@ export default function App() {
 
             {/* Streak Stats Widget */}
             <div className="neon-border p-6 rounded-xl flex flex-col justify-center items-center lg:col-span-2 overflow-hidden">
-              <img 
-                src="https://streak-stats.demolab.com?user=Kthesword&theme=tokyonight" 
+              <img
+                src="https://streak-stats.demolab.com?user=Kthesword&theme=tokyonight"
                 alt="Kalid's GitHub Streak"
                 className="w-full max-w-xl rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
                 loading="lazy"
@@ -624,23 +635,23 @@ export default function App() {
               </h2>
               <div className="space-y-5">
                 {[
-                  { 
-                    title: "LeetCode 200 Days Badge", 
+                  {
+                    title: "LeetCode 200 Days Badge",
                     details: "Solved 340+ algorithmic challenges with deep focus on Dynamic Programming, Graph Theory, and Trees.",
                     highlight: "340+ Solutions"
                   },
-                  { 
-                    title: "Top 5% ASTU Entrance Contest", 
+                  {
+                    title: "Top 5% ASTU Entrance Contest",
                     details: "Ranked in the top percentile among 400+ university candidates in algorithmic problem-solving speed and accuracy.",
                     highlight: "Top 5%"
                   },
-                  { 
-                    title: "Competitive Programming Mastery", 
+                  {
+                    title: "Competitive Programming Mastery",
                     details: "Actively training across Codeforces and LeetCode, advancing proficiency in distributed algorithms, greedy strategies, and computational complexity.",
                     highlight: "Active Contender"
                   }
                 ].map((item, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     whileHover={{ scale: 1.02 }}
                     className="neon-border p-6 rounded-xl flex gap-5 items-center"
@@ -677,7 +688,7 @@ export default function App() {
               Designed & Developed by Kalid Adem — Software Engineer & AI Developer
             </p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row items-center gap-8">
             <div className="flex flex-col sm:items-end gap-1.5">
               <span className="text-[10px] uppercase font-bold text-slate-text tracking-[0.2em]">Direct Channels</span>
@@ -690,29 +701,29 @@ export default function App() {
                 +251 909 561 875
               </a>
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <a 
-                href="https://github.com/Kthesword" 
-                target="_blank" 
+              <a
+                href="https://github.com/Kthesword"
+                target="_blank"
                 rel="noopener noreferrer"
                 title="GitHub"
                 className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:border-neon-cyan hover:text-neon-cyan transition-all bg-white/5"
               >
                 <Github size={18} />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/kalid-adem" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/kalid-adem"
+                target="_blank"
                 rel="noopener noreferrer"
                 title="LinkedIn"
                 className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:border-neon-cyan hover:text-neon-cyan transition-all bg-white/5"
               >
                 <Linkedin size={18} />
               </a>
-              <a 
-                href="https://kalid-portfolio-chi.vercel.app/" 
-                target="_blank" 
+              <a
+                href="https://kalid-portfolio-chi.vercel.app/"
+                target="_blank"
                 rel="noopener noreferrer"
                 title="Live Portfolio"
                 className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:border-neon-cyan hover:text-neon-cyan transition-all bg-white/5"
