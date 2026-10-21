@@ -3,7 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import Resume from "./Resume";
 import {
   Github,
   Linkedin,
@@ -37,12 +39,12 @@ const EXPERIENCE = [
   {
     company: "GoldenAge Technology PLC",
     role: "Software Engineering Intern",
-    period: "Present",
+    period: "Jul 2026 – Sep 2026",
     location: "Addis Ababa, Ethiopia",
     projectFocus: "OpsFlow Platform",
     tech: ["Next.js 16", "NestJS 11", "TypeScript", "PostgreSQL", "Prisma ORM", "Socket.IO", "Turborepo"],
     description: [
-      "Contributing to OpsFlow, an internal enterprise operations platform engineered for asset management, approval pipelines, and executive intelligence.",
+      "Engineered OpsFlow, an internal enterprise operations platform for asset management, approval pipelines, and executive intelligence dashboards.",
       "Building end-to-end features across a Next.js 16 (App Router) presentation layer and a NestJS 11 backend powered by PostgreSQL & Prisma ORM.",
       "Implementing server-enforced Role-Based Access Control (RBAC), room-scoped Socket.IO WebSockets for zero-refresh collaborative workflows, and automated cron snapshot services."
     ]
@@ -71,6 +73,15 @@ const PROJECTS = [
     tech: ["Next.js 16", "NestJS 11", "TypeScript", "PostgreSQL", "Prisma ORM", "Socket.IO", "Turborepo"],
     github: "https://github.com/Kthesword/opsflow-test",
     live: null
+  },
+  {
+    title: "ASTU Geophysical Map",
+    subtitle: "Interactive GIS Web Mapping Application",
+    badge: "Live Deployment",
+    description: "Interactive geophysical web mapping application built for Adama Science and Technology University, enabling visualization and analysis of geospatial data including geological layers, survey points, and spatial datasets through an intuitive GIS interface.",
+    tech: ["Python", "Streamlit", "GeoPandas", "Folium", "GIS", "Geospatial Analysis"],
+    github: "https://github.com/Kthesword",
+    live: "https://astugeophysicalmap.streamlit.app/"
   },
   {
     title: "Kindi-Hub",
@@ -169,6 +180,21 @@ const SKILLS = [
 ];
 
 export default function App() {
+  const [page, setPage] = useState<"home" | "resume">(
+    window.location.hash === "#/resume" ? "resume" : "home"
+  );
+
+  useEffect(() => {
+    const onHash = () => {
+      setPage(window.location.hash === "#/resume" ? "resume" : "home");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  if (page === "resume") return <Resume />;
+
   return (
     <div className="min-h-screen bg-dark-bg text-gray-100 selection:bg-neon-cyan/30 selection:text-neon-cyan overflow-x-hidden relative">
       {/* Ambient Background Grid & Glow Elements */}
@@ -196,8 +222,7 @@ export default function App() {
           ))}
           <div className="flex items-center gap-3 ml-2">
             <a
-              href="/Kalid_Adem_Resume.pdf"
-              download="Kalid_Adem_Resume.pdf"
+              href="#/resume"
               className="px-3.5 py-1.5 rounded-full border border-emerald-400/50 bg-emerald-400/10 text-emerald-400 hover:bg-emerald-400 hover:text-black transition-all font-bold text-xs flex items-center gap-1.5"
             >
               <Download size={14} />
@@ -235,7 +260,7 @@ export default function App() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-text tracking-[0.5px] border-l-[3px] border-neon-cyan pl-4 leading-relaxed mb-10 max-w-xl">
-                <strong className="text-white font-semibold">Software Engineer & AI Developer</strong> with hands-on experience engineering scalable web applications, distributed platforms, and AI-driven systems. Currently building <span className="text-neon-cyan font-medium">OpsFlow</span> at GoldenAge Technology PLC.
+                <strong className="text-white font-semibold">Software Engineer & AI Developer</strong> with hands-on experience engineering scalable web applications, distributed platforms, and AI-driven systems. Previously engineered <span className="text-neon-cyan font-medium">OpsFlow</span> at GoldenAge Technology PLC.
               </p>
 
               {/* Quick Metrics */}
